@@ -12,7 +12,9 @@ namespace WebApplication2.Controllers
         private readonly OpenAIAPI _openApiSvc;
         public AIController(IConfiguration config)
         {
+            //想說是這個問題
             //_openApiSvc = new OpenAIAPI(new APIAuthentication(config["OpenAIServiceOptions:ApiKey"]));
+
             _openApiSvc = new OpenAIAPI(config["OpenAIServiceOptions:ApiKey"]);
         }
 
@@ -35,7 +37,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public async Task<string> PostAsync([FromBody] string text)
         {
-            var a = _openApiSvc.Auth;
+            var apiKey = _openApiSvc.Auth;
             var chat = _openApiSvc.Chat.CreateConversation();
 
             chat.AppendUserInput(text);
