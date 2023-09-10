@@ -18,21 +18,6 @@ namespace WebApplication2.Controllers
             _openApiSvc = new OpenAIAPI(config["OpenAIServiceOptions:ApiKey"]);
         }
 
-
-        // GET: api/<AIController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<AIController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/<AIController>
         [HttpPost]
         public async Task<string> PostAsync([FromBody] string text)
@@ -45,18 +30,6 @@ namespace WebApplication2.Controllers
             string response = await chat.GetResponseFromChatbotAsync();
 
             return response;
-        }
-
-        // PUT api/<AIController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AIController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
